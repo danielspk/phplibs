@@ -12,16 +12,69 @@ namespace DMS\Libs;
  */
 class Captcha {
 
-	// propiedades públicas que se pueden editar desde la configuración o desde la instancia de la clase para adaptar la imagen Captcha
+	// propiedades públicas que se pueden editar desde la configuración o desde 
+	// la instancia de la clase para adaptar la imagen Captcha
+	// (por simplicidad de la clase no se ofrecen setters y getters)
+	
+	/**
+	 * Alto del Captcha
+	 * @var int 
+	 */
 	public $alto = 62;
+	
+	/**
+	 * Ancho del Captcha
+	 * @var int 
+	 */
 	public $ancho = 180;
+	
+	/**
+	 * Cantidad de letras del Captcha
+	 * @var int 
+	 */
 	public $letras = 6;
+	
+	/**
+	 * Tamaño de la fuente de las letras
+	 * @var int 
+	 */
 	public $tamanioFuente = 23;
+	
+	/**
+	 * Espacio entre letras
+	 * @var int
+	 */
 	public $espacioLetras = 3;
-	public $esfumado = 24; //1: muy esfumado 50: sin esfumado
+	
+	/**
+	 * Graduación de esfumado de letras
+	 * 1: muy esfumado 50: sin esfumado
+	 * @var int
+	 */
+	public $esfumado = 24;
+	
+	/**
+	 * Cantidad de líneas que atraviesan el Captcha
+	 * @var int
+	 */
 	public $lineas = 2;
+	
+	/**
+	 * Cantidad de puntos a dibujar en el fondo del Captcha
+	 * @var int
+	 */
 	public $puntos = 500;
+	
+	/**
+	 * Color hexadecimal del fondo del Captcha
+	 * @var string
+	 */
 	public $colorFondo = '#FFFFFF';
+	
+	/**
+	 * Arreglo de colores hexadecimales para las letras
+	 * @var array
+	 */
 	public $coloresLetras = array( // rojo, verde, azul, violeta, naranja
 		'#DD0101',
 		'#016401',
@@ -29,9 +82,16 @@ class Captcha {
 		'#800180',
 		'#F45001'
 	);
+	
+	/**
+	 * Imagen de fondo a utilizar en el Captcha
+	 * Su uso reemplaza el color de fondo definido por código hexadecimal
+	 * @var string
+	 */
 	public $fondo = '';
 
 	// propiedades privadas que no pueden ser editardas con la clase declarada
+	// @todo: pendiente de documentar
 	private $imagen;
 	private $colorFuente;
 	private $colorImagen;
@@ -48,12 +108,18 @@ class Captcha {
 		'StayPuft.ttf'
 	);
 	
-	// Constructor de la Clase
+	/**
+	 * Constructor de la clase
+	 */
 	public function __construct(){
 		session_start();
 	}
 	
-	// Método para convertir colores hexadecimales en un array RGB
+	/**
+	 * Método que convierte colores hexadecimales en un array RGB
+	 * @param string $hexadecimal Código hexadecimal
+	 * @return array
+	 */
 	private function hexaToRGB($hexadecimal) {
 		
 		$color = str_replace('#', '', $hexadecimal);
@@ -68,7 +134,11 @@ class Captcha {
 		
 	}
 	
-	// Método que valida si el código ingresado es correcto
+	/**
+	 * Método que valida si el código ingresado es correcto
+	 * @param string $codigo Código a validar
+	 * @return boolean
+	 */
 	public function validarCaptcha($codigo){
 	
 		if( strtolower($codigo) ===  $_SESSION['codCaptchaDMS'] )
@@ -78,7 +148,9 @@ class Captcha {
 			
 	}
 	
-	// Método para crear la imagen Captcha
+	/**
+	 * Método que crea la imagen del Captcha
+	 */
 	public function generarImagen(){
 		
 		// se crear la imagen vacia
