@@ -42,8 +42,45 @@ class Valida {
 		);
 	}
 
-	public function email($pEmail) {
+	public function email($pEmail)
+	{
 		return filter_var($pEmail, FILTER_VALIDATE_EMAIL);
+	}
+	
+	public function entero($pNumero)
+	{
+		return (
+			filter_var(
+				$pNumero, FILTER_VALIDATE_REGEXP, array(
+					"options" => array(
+						"regexp" => "/^[0-9]*$/"
+					)
+				)
+			)
+		);
+	}
+	
+	public function decimal($pNumero)
+	{
+		return filter_var($pNumero, FILTER_VALIDATE_FLOAT);
+	}
+	
+	// formato de entrada AAAA-MM-DD
+	public function fecha($pFecha) {
+		
+		if (strlen($pFecha)!= 10)
+			return false;
+		
+		$dia = substr($pFecha, 8, 2);
+		$mes = substr($pFecha, 5, 2);
+		$anio = substr($pFecha, 0, 4);
+		
+		return ($this->entero($dia) && $this->entero($mes) && $this->entero($anio) && checkdate($mes, $dia, $anio));
+	}
+	
+	public function esAjax()
+	{
+		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 	}
 	
 }
