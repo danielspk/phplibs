@@ -1,0 +1,19 @@
+{
+    "name": "danielspk/libs",
+    "description": "Librerías de uso general para PHP",
+    "keywords": [
+		    "libreria", "php"
+	  ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel M. Spiridione",
+			      "email": "info@daniel-spiridione.com.ar",
+            "homepage": "http://daniel-spiridione.com.ar/",
+            "role": "Developer"
+        }
+    ],
+	"require": {
+        "php": ">=5.3.0"
+    }
+}
