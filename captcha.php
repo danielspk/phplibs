@@ -1,5 +1,5 @@
 <?php
-namespace DMS\Libs;
+namespace DMS\PHPLibs;
 
 /**
  * Clase de generación y validación de captchas
@@ -8,7 +8,7 @@ namespace DMS\Libs;
  * @author Daniel M. Spiridione <info@daniel-spiridione.com.ar>
  * @link https://github.com/danielspk/LIBS
  * @license https://github.com/danielspk/LIBS/blob/master/LICENSE MIT License
- * @version 1.0.0
+ * @version 0.8.2
  */
 class Captcha {
 
