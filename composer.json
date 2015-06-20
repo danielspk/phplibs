@@ -18,7 +18,7 @@
     },
 	"autoload": {
         "psr-4": {
-          "DMS\\PHPLibs\\": "/"
+          "DMS\\PHPLibs\\": "src/"
         }
     }
 }

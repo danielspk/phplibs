@@ -15,7 +15,7 @@ class DataBase extends \PDO
 
 	/**
 	 * Instancia de la clase (patrón Singleton)
-	 * @var \DMS\Libs\DataBase 
+	 * @var \DMS\PhPLibs\DataBase
 	 */
 	private static $_instancia = null;
 
@@ -80,7 +80,7 @@ class DataBase extends \PDO
 	/**
 	 * Método que crea una instancia o devuelve la actual (patrón Singleton)
 	 * @param array $pConfig Array de configuración [opcional si ya existe una instancia]
-	 * @return type
+	 * @return \PDO
 	 */
 	public static function conectar($pConfig = null)
 	{
